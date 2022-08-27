@@ -6,7 +6,7 @@ const IndGameState = (props) => {
     const [description, setDescription] = useState("");
     const [image, setImage] = useState("");
     const [title, setTitle] = useState("");
-    const [devolper, setDevoloper] = useState("");
+    const [developer, setDeveloper] = useState("");
     const [publisher, setPublisher] = useState("");
     const [supportedsystem, setSupportedSystem] = useState("");
     const [playedby, setPlayedBy] = useState("");
@@ -27,8 +27,8 @@ const IndGameState = (props) => {
     const setGameTitle = (title) => {
         setTitle(title)
     }
-    const setGameDevoloper= (url)=>{
-        setDevoloper(url);
+    const setGameDeveloper= (url)=>{
+        setDeveloper(url);
     }
     const setGamepublisher = (ShowInfo) => {
         setPublisher(ShowInfo);
@@ -53,7 +53,7 @@ const IndGameState = (props) => {
     }
 
     return (
-        <IndGameContext.Provider value={{ id, description, image, title, devolper,publisher,supportedsystem,playedby,genre,rating,releasedate,price,setGameId, setGameDescription ,setGameImage,setGameTitle, setGameDevoloper,setGamepublisher ,setGamesupportedsystem,setGameplayedby,setGamegenre, setGamerating,setGamereleasedate,setGameprice}}>
+        <IndGameContext.Provider value={{ id, description, image, title, developer,publisher,supportedsystem,playedby,genre,rating,releasedate,price,setGameId, setGameDescription ,setGameImage,setGameTitle, setGameDeveloper,setGamepublisher ,setGamesupportedsystem,setGameplayedby,setGamegenre, setGamerating,setGamereleasedate,setGameprice}}>
             {props.children}
         </IndGameContext.Provider>
     )

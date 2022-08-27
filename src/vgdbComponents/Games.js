@@ -11,7 +11,7 @@ export const Games = () => {
     game.myGames.map((game) =>{
       i++;
       return(
-        <Game key = {game.id} id = {game.id} devolpoer = {game.dname} publisher = {game.pname} supportedsystem = {game.supportedsystem} playedby = {game.playedby} genre = {game.gtitle} rating = {game.rating}  releasedate = {game.releasedate} price = {game.price} image = {game.photo} title = {game.title} serial = {i}/>
+        <Game key = {game.id} id = {game.id} developer = {game.dname} publisher = {game.pname} supportedsystem = {game.supportedsystem} playedby = {game.playedby} genre = {game.gtitle} rating = {game.rating}  releasedate = {game.releasedate} price = {game.price} image = {game.photo} title = {game.title} serial = {i}/>
       )
     })
     }
