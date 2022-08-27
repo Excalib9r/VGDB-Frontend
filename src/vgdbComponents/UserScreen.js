@@ -1,68 +1,51 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useEffect, useState } from 'react'
 import { Games } from './Games'
-import GameContext from '../context/games/GameContext';
 import IndGame from './IndGame';
+import NavGameContext from '../context/navPage/NavGameContext';
+import GameContext from '../context/games/GameContext';
+import SideBarContext from '../context/sideBarPage/SideBarContext';
+import axios from 'axios';
+import Inventory from './Inventory';
+import WishList from './WishList';
+import MyCart from './MyCart';
+import News from './News';
 
 export default function UserScreen() {
 
-  const [allGames, setAlLGames] = useState(true);
-  const [topRated, setTopRated] = useState(false);
-  const [mostPlayed, setMostPlayed] = useState(false);
-
+  
   const game = useContext(GameContext);
+  // const navInfo = useContext(NavGameContext);
+  const sidePage = useContext(SideBarContext);
 
-  const sethome = ()=>{
-    setAlLGames(true);
-    setTopRated(false);
-    setMostPlayed(false);
-    game.setGameInfo("");
-    game.showGameInfo(false);
-    game.setUrl("");
-  }
-
-  const settoprated = ()=>{
-    setAlLGames(false);
-    setTopRated(true);
-    setMostPlayed(false);
-    game.setGameInfo("");
-    game.showGameInfo(false);
-    game.setUrl("");
-  }
-
-  const setmostplayed = ()=>{
-    setAlLGames(false);
-    setTopRated(false);
-    setMostPlayed(true);
-    game.setGameInfo("");
-    game.showGameInfo(false);
-    game.setUrl("");
-  }
-
+  // const [profiles,setProfiles] = useState([])
+  // useEffect(()=>{
+  //   axios.get("https://reqres.in/api/users").then(data=>{
+  //     console.log(data.data.data)
+  //     setProfiles(data.data.data)
+  //   })
+  // },[])
   return (
-    <div className='accessories'>
-      <nav className="navbar navbar-expand-lg bg-dark">
-        <div className="container-fluid">
-          <div className="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-              <li className="nav-item bg-white border border-success rounded-4 p-1 mx-1">
-                <button type="submit" className="btn btn-primary" onClick = {sethome}>Home</button>
-              </li>
-              <li className="nav-item bg-white border border-success rounded-4 p-1 mx-1">
-                <button type="submit" className="btn btn-primary" onClick = {settoprated}>Top Rated</button>
-              </li>
-              <li className="nav-item bg-white border border-success rounded-4 p-1 mx-1" >
-                <button type="submit" className="btn btn-primary" onClick = {setmostplayed}>Most Played</button>
-              </li>
-            </ul>
-            <form className="d-flex" role="search">
-              <input className="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
-              <button className="btn btn-outline-success" type="submit">Search</button>
-            </form>
-          </div>
-        </div>
-      </nav>
+    <div className='accessories-extend'>
+      {/* {profiles.map(data=>{
+        return(
+
+          <i  mg src={data.avatar}/>
+        )
+      })} */}
       {
-        game.gameState ? <IndGame image={game.gameUrl} title={game.gameTitle} /> : <Games allGames={allGames} topRated={topRated} mostPlayed={mostPlayed}/>
+        sidePage.inventory ? <Inventory myGames = {game.myGames}/> : ""
+      }
+      {
+        sidePage.news ? <News News = {game.myGames}/> : ""
+      }
+      {
+        sidePage.wishlist ? <WishList myGames = {game.myGames}/> : ""
+      }
+      {
+        sidePage.myCart ? <MyCart myGames = {game.myGames}/> : ""
+      }
+      {
+        game.gameState ? <IndGame /> : <Games myGames = {game.myGames} />
       }
     </div>
   )

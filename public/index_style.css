@@ -19,8 +19,17 @@
     font-family: 'Trispace', sans-serif;
     position: relative;
     left: 17%;
+    width: 83%;
+    background: #11101d;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+.accessories-extend{
+    font-family: 'Trispace', sans-serif;
+    position: relative;
     min-height: 100vh;
     height: 100%;
+    left: 17%;
     width: 83%;
     background: #11101d;
     border: 2px solid black;
@@ -202,4 +211,22 @@
 }
 .checked{
     color : orange;
+}
+.cartGamePlace{
+    display: flex;
+    position: relative;
+    min-height: 70vh;
+    height: 70%;
+    background: #11101d;
+    border: 2px solid black;
+    box-sizing: border-box;
+}
+.orderBox{
+    display: flex;
+    position: relative;
+    height: 30%;
+    min-height: 40vh;
+    background: #11101d;
+    border: 2px solid black;
+    box-sizing: border-box;
 }

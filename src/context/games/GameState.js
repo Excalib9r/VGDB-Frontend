@@ -3,19 +3,16 @@ import GameContext from "./GameContext";
 
 const GameState = (props) => {
     const [gameState, setGameState] = useState(false);
-    const [gameTitle, setGameTitle] = useState("");
-    const [gameUrl, setGameUrl] = useState("");
+    const [myGames, setMygames] = useState([]);
+
+    const setGamesMyGames = (info)=>{
+        setMygames(info)
+    }
     const showGameInfo = (ShowInfo) => {
         setGameState(ShowInfo);
     }
-    const setGameInfo = (title) => {
-        setGameTitle(title)
-    }
-    const setUrl = (url)=>{
-        setGameUrl(url);
-    }
     return (
-        <GameContext.Provider value={{ gameState, gameTitle, gameUrl, showGameInfo, setGameInfo, setUrl}}>
+        <GameContext.Provider value={{ gameState,myGames,setGamesMyGames, showGameInfo}}>
             {props.children}
         </GameContext.Provider>
     )

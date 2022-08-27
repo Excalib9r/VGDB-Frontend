@@ -1,6 +1,42 @@
-import React from 'react'
+import React, { useContext } from 'react'
+import IndGameContext from '../context/indGame/IndGameContext'
 
 const IndGame = (props) => {
+
+    const game = useContext(IndGameContext);
+    const token = JSON.parse(localStorage.getItem('token'));
+    console.log(token);
+
+    const addToCart = () => {
+        axios.post("", {
+            id : game.id
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then((response) => {
+            const json = response.data
+            console.log(json);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
+    const addToWishList = ()=>{
+        axios.post("", {
+            id: game.id
+        }, {
+            headers: {
+                'Authorization': `Bearer ${token}`
+            }
+        }).then((response) => {
+            const json = response.data
+            console.log(json);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
     const tableStyle = {
         width: "50rem"
     }
@@ -18,43 +54,43 @@ const IndGame = (props) => {
                     <tbody>
                         <tr>
                             <td>Game Id</td>
-                            <td>101102</td>
+                            <td>{game.id}</td>
                         </tr>
                         <tr>
                             <td>Game Title</td>
-                            <td>{props.title}</td>
+                            <td>{game.title}</td>
                         </tr>
                         <tr>
                             <td>Devoloper</td>
-                            <td>CD PROJECT RED</td>
+                            <td>{game.developer}</td>
                         </tr>
                         <tr>
                             <td>Publisher</td>
-                            <td>CD PROJECT RED</td>
+                            <td>{game.publisher}</td>
                         </tr>
                         <tr>
                             <td>Supported Systems</td>
-                            <td>Windows</td>
+                            <td>{game.supportedsystem}</td>
                         </tr>
                         <tr>
                             <td>Played By</td>
-                            <td>1000 users</td>
+                            <td>{game.playedby} users</td>
                         </tr>
                         <tr>
                             <td>Genre</td>
-                            <td>Adventure</td>
+                            <td>{game.genre}</td>
                         </tr>
                         <tr>
                             <td>Rating</td>
-                            <td><span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span>
-                                <span className="fa fa-star checked"></span></td>
+                            <td>{game.rating}<span className="fa fa-star"></span></td>
                         </tr>
                         <tr>
                             <td>Release Date</td>
-                            <td>18 May 2015</td>
+                            <td>{game.releasedate}</td>
+                        </tr>
+                        <tr>
+                            <td>Price</td>
+                            <td>{game.price}</td>
                         </tr>
                     </tbody>
                 </table>
@@ -62,12 +98,12 @@ const IndGame = (props) => {
             <div className='m-4' style={myStyle}>
                 <img className="card-img forEachGameInd" src={props.image} />
                 <div className='d-inline-flex'>
-                <button type="button" className = "m-2 btn btn-info">Buy</button>
-                <button type="button" className = "m-2 btn btn-info">Addto Wishlist</button>
-                <button type="button" className = "m-2 btn btn-info">Rate Game</button>
+                    <button type="button" className="m-2 btn btn-info" onClick={addToCart}><i className='bx bx-cart-add bx-sm'></i></button>
+                    <button type="button" className="m-2 btn btn-info" onClick={addToWishList}>Addto Wishlist</button>
+                    <button type="button" className="m-2 btn btn-info">Rate Game</button>
                 </div>
                 <div>
-                    <h3 className="text-light bg-dark">Description</h3>
+                    <h3 className="text-light bg-dark">{game.description}</h3>
                 </div>
             </div>
         </div>

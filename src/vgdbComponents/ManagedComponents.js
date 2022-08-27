@@ -8,6 +8,8 @@ import { Routes, Route } from 'react-router-dom'
 
 export default function ManagedComponents() {
 
+    console.log('in managedComponent.js');
+
     return (
         <div>
             <Routes>

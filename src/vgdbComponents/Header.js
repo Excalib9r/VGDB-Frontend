@@ -5,6 +5,8 @@ import { User } from './User';
 
 export default function Header(props) {
 
+  console.log('in header.js');
+
   let location = useLocation();
   useEffect(() => {
     console.log(location)
